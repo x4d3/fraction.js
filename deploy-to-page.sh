@@ -7,7 +7,7 @@ rm -rf target || exit 0;
 mkdir target;
 
 # run our compile script, discussed above
-grunt stage
+grunt
 
 # go to the out directory and create a *new* Git repo
 cd target
