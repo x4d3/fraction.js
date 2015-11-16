@@ -20,6 +20,7 @@ git config user.email "travis@xade.eu"
 # files present with the commit message "Deploy to GitHub Pages".
 git add .
 git commit -m "Deploy to GitHub Pages"
+
 # Force push from the current repo's master branch to the remote
 # repo's gh-pages branch. (All previous history on the gh-pages branch
 # will be lost, since we are overwriting it.) We redirect any output to
