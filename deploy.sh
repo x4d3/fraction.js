@@ -7,12 +7,11 @@ rm -rf target || exit 0;
 mkdir target;
 
 # run our compile script, discussed above
-grunt
+grunt stage
 
 # go to the out directory and create a *new* Git repo
 cd target
 git init
-
 # inside this git repo we'll pretend to be a new user
 git config user.name "Travis CI"
 git config user.email "travis@xade.eu"
