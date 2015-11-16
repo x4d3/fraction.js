@@ -2,6 +2,9 @@
 # From https://gist.github.com/domenic/ec8b0fc8ab45f39403dd
 set -e # exit with nonzero exit code if anything fails
 
+: ${GH_TOKEN?"Need to set GH_TOKEN"}
+: ${GH_REF:?"Need to set GH_REF non-empty"}
+
 # clear and re-create the out directory
 rm -rf target || exit 0;
 mkdir target;
