@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 					src : [ '**' ],
 					dest : 'target/'
 				}, {
-					src : 'fraction.js',
+					src : 'src/fraction.js',
 					dest : 'target/fraction.js',
 				} ]
 			}
@@ -20,7 +20,7 @@ module.exports = function(grunt) {
 			files : [ 'tests/**/*test.html' ]
 		},
 		jshint : {
-			files : [ 'Gruntfile.js', 'fraction.js' ],
+			files : [ 'Gruntfile.js', 'src/fraction.js' ],
 			options : {
 				// options here to override JSHint defaults
 				globals : {
@@ -37,6 +37,20 @@ module.exports = function(grunt) {
 					'target/fraction.min.js' : [ 'target/fraction.js' ]
 				}
 			}
+		},
+		yuidoc : {
+			compile : {
+				name : '<%= pkg.name %>',
+				description : '<%= pkg.description %>',
+				version : '<%= pkg.version %>',
+				url : '<%= pkg.homepage %>',
+				options : {
+					paths : 'src',
+					outdir : 'target/docs/',
+					themedir : "yuidoc-theme",
+					helpers : [ "yuidoc-theme/helpers/helpers.js" ]
+				}
+			}
 		}
 
 	});
@@ -46,7 +60,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-contrib-qunit');
-
+	grunt.loadNpmTasks('grunt-contrib-yuidoc');
 	grunt.registerTask('test', [ 'jshint', 'qunit' ]);
-	grunt.registerTask('default', [ 'test', 'clean', 'copy', 'uglify' ]);
+	grunt.registerTask('default', [ 'test', 'clean', 'copy', 'uglify', 'yuidoc' ]);
 };

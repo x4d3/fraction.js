@@ -15,9 +15,14 @@ Fraction = (function() {
 		}
 		return value;
 	};
-	
+	/**
+	 * This is the description for my class.
+	 * 
+	 * @class Fraction
+	 * @constructor
+	 */
 	var Fraction = function(numerator, denominator, noCheck) {
-		if(!noCheck){
+		if (!noCheck) {
 			checkIsInt(numerator);
 			checkIsInt(denominator);
 			if (denominator === 0) {
@@ -32,7 +37,13 @@ Fraction = (function() {
 		this.denominator = denominator;
 		this.normalize();
 	};
-
+	/**
+	 * My method description. Like other pieces of your comment blocks, this can
+	 * span multiple lines.
+	 * 
+	 * @method methodName
+	 * @return {Fraction} Returns a clone of the fraction
+	 */
 	Fraction.prototype.clone = function() {
 		return new Fraction(this.numerator, this.denominator, true);
 	};
@@ -140,7 +151,7 @@ Fraction = (function() {
 		}
 	};
 
-	Fraction.prototype.normalize = function(){
+	Fraction.prototype.normalize = function() {
 		var gcf = Fraction.gcf(this.numerator, this.denominator);
 		this.numerator /= gcf;
 		this.denominator /= gcf;
