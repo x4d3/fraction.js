@@ -197,8 +197,16 @@ Fraction = (function() {
 		}
 		return this;
 	};
-	/* Takes two numbers and returns their greatest common factor. */
+	/* . */
 	// Adapted from Ratio.js
+	
+	/**
+	 * Takes two numbers and returns their greatest common factor
+	 * 
+	 * @static
+	 * @method gcf
+	 * @returns {Number}
+	 */
 	Fraction.gcf = function(a, b) {
 		if (arguments.length < 2) {
 			return a;
@@ -206,15 +214,6 @@ Fraction = (function() {
 		var c;
 		a = Math.abs(a);
 		b = Math.abs(b);
-		/*
-		 * //It seems to be no need in these checks // Same as isNaN() but
-		 * faster if (a !== a || b !== b) { return NaN; } //Same as !isFinite()
-		 * but faster if (a === Infinity || a === -Infinity || b === Infinity ||
-		 * b === -Infinity) { return Infinity; } // Checks if a or b are
-		 * decimals if ((a % 1 !== 0) || (b % 1 !== 0)) { throw new Error("Can
-		 * only operate on integers"); }
-		 */
-
 		while (b) {
 			c = a % b;
 			a = b;
@@ -222,6 +221,20 @@ Fraction = (function() {
 		}
 		return a;
 	};
+	/**
+	 * parse a string of the format a/b to a Fraction
+	 * 
+	 * @static
+	 * @method parse
+	 * @returns {Fraction}
+	 */
+	Fraction.parse = function(s) {
+		var split = s.split('/');
+		var n = parseInt(split[0].trim(), 10 );
+		var d = parseInt(split[1].trim(), 10 );
+		return new Fraction(n, d);
+	};
+	
 	/**
 	 *<code>Fraction</code> representation of 0.
 	 * @property ZERO

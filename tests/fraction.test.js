@@ -60,3 +60,18 @@ test("value", function() {
 	equal(Fraction.ZERO.value(), 0);
 	equal(Fraction.ONE.value(), 1);
 });
+
+
+test("parse", function() {
+	ok(Fraction.parse("1/1").equals(Fraction.ONE));
+	ok(Fraction.parse("-4/7").equals(frac(-4,7)));
+	throws(function() {
+		Fraction.parse("0")
+	});
+	throws(function() {
+		Fraction.parse("1/a")
+	});
+	throws(function() {
+		Fraction.parse("a/a")
+	});
+});
