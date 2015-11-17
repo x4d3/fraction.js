@@ -16,10 +16,11 @@ Fraction = (function() {
 		return value;
 	};
 	/**
-	 * This is the description for my class.
-	 * 
+	 * Initialize the Fraction, numerator and denominator 
 	 * @class Fraction
 	 * @constructor
+	 * @param {Integer} numerator of the fraction 
+	 * @param {Integer} denominator the fraction must not be equal to 0
 	 */
 	var Fraction = function(numerator, denominator, noCheck) {
 		if (!noCheck) {
@@ -38,23 +39,32 @@ Fraction = (function() {
 		this.normalize();
 	};
 	/**
-	 * My method description. Like other pieces of your comment blocks, this can
-	 * span multiple lines.
+	 * clone the Fraction
 	 * 
-	 * @method methodName
+	 * @method clone
 	 * @return {Fraction} Returns a clone of the fraction
 	 */
 	Fraction.prototype.clone = function() {
 		return new Fraction(this.numerator, this.denominator, true);
 	};
 
-	/* pretty-printer, converts fractions into whole numbers and fractions */
+	/**
+	 * pretty-printer, converts fractions into whole numbers and fractions
+	 * 
+	 * @method toString
+	 * @returns {String}
+	 */
 	Fraction.prototype.toString = function() {
 		return this.numerator + "/" + this.denominator;
 
 	};
 
-	/* pretty-printer to support TeX notation (using with MathJax, KaTeX, etc) */
+	/**
+	 * pretty-printer to support TeX notation (using with MathJax, KaTeX, etc)
+	 * 
+	 * @method toTeX
+	 * @returns {String}
+	 */
 	Fraction.prototype.toTeX = function(mixed) {
 		var result = '';
 		if ((this.numerator < 0) != (this.denominator < 0))
@@ -85,6 +95,12 @@ Fraction = (function() {
 		return this;
 	};
 
+	/**
+	 * Adds the value of this fraction to another, returning the result in reduced form.
+	 * 
+	 * @method add
+	 * @returns {Fraction}
+	 */
 	Fraction.prototype.add = function(b) {
 		var a = this.clone();
 		if (!(b instanceof Fraction)) {
@@ -96,6 +112,12 @@ Fraction = (function() {
 		return a.normalize();
 	};
 
+	/**
+	 * Subtracts the value of another fraction from the value of this one, returning the result in reduced form
+	 * 
+	 * @method subtract
+	 * @returns {Fraction}
+	 */
 	Fraction.prototype.subtract = function(b) {
 		var a = this.clone();
 		if (!(b instanceof Fraction)) {
@@ -130,9 +152,13 @@ Fraction = (function() {
 			return false;
 		}
 		// fractions that are equal should have equal normalized forms
-		return (a.numerator === b.numerator && a.denominator === b.denominator);
+		return (this.numerator === b.numerator && this.denominator === b.denominator);
 	};
-
+	/**
+	 * Compares this object to another based on size.
+	 * @method compareTo
+	 * @returns {Fraction}
+	 */
 	Fraction.prototype.compareTo = function(b) {
 		if (!(b instanceof Fraction)) {
 			throw "must be a Fraction: " + b;
@@ -186,5 +212,22 @@ Fraction = (function() {
 		}
 		return a;
 	};
+	/**
+	 *<code>Fraction</code> representation of 0.
+	 * @property ZERO
+	 * @type Fraction
+	 * @static
+	 * @final
+	 */
+	Fraction.ZERO = new Fraction(0,1);
+	/**
+	 *<code>Fraction</code> representation of 1.
+	 * @property ONE
+	 * @type Fraction
+	 * @static
+	 * @final
+	 */
+	Fraction.ONE = new Fraction(1,1);
+	
 	return Fraction;
 })();
