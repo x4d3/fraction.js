@@ -43,14 +43,14 @@ body {
 			<div class="col-lg-12 text-center">
 				<h1>fraction.js</h1>
 				<p class="lead">Yet another implementation of fraction in javascript</p>
+				
+				<h3>Download</h3>
 				<p>
-					<a href="fraction.js" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span>Download fraction.js</a> <a href="fraction.min.js" class="btn btn-lg btn-primary"><span
-						class="glyphicon glyphicon-download"></span>Download fraction.min.js</a> <br />
-						
-						
-						 
+				
+				<a href="fraction.js" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> fraction.js</a>
+				<a href="fraction.min.js" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-download"></span> fraction.min.js</a>
 				</p>
-				<h3>Example:</h3>
+				<h3>Usage:</h3>
 				<!-- Templates -->
 				<div id="sandbox" class="text-left">sandbox console loading...</div>
 				<!-- The sandbox template: -->
@@ -88,11 +88,12 @@ body {
 						sandbox.model.load('fraction.js');
 						sandbox.model.evaluate("var f1 = new Fraction(1,2); f1.toString();"); 
 						sandbox.model.evaluate("var f2 = f1.add(new Fraction(4,5)); f2.toTeX();"); 
-						sandbox.model.evaluate("var f3 = f2.divide(new Fraction(7,8)); f3.toString();"); 
+						sandbox.model.evaluate("var f3 = f2.divide(new Fraction(7,8)); f3.value();"); 
 					});
 				</script>
+				<br/>
 				
-				<a href="docs/classes/Fraction.html" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-book"></span>Documentation</a>
+				<a href="docs/classes/Fraction.html" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-book"></span> Documentation</a>
 			</div>
 		</div>
 		<!-- /.row -->

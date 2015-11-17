@@ -38,6 +38,16 @@ Fraction = (function() {
 		this.denominator = denominator;
 		this.normalize();
 	};
+
+	/**
+	 * 
+	 * @method value
+	 * @return {Number} the float number represented by the fraction
+	 */
+	Fraction.prototype.value = function() {
+		return this.numerator / this.denominator;
+	};
+
 	/**
 	 * clone the Fraction
 	 * 
@@ -219,7 +229,7 @@ Fraction = (function() {
 	 * @static
 	 * @final
 	 */
-	Fraction.ZERO = new Fraction(0,1);
+	Fraction.ZERO = new Fraction(0, 1);
 	/**
 	 *<code>Fraction</code> representation of 1.
 	 * @property ONE
@@ -227,7 +237,7 @@ Fraction = (function() {
 	 * @static
 	 * @final
 	 */
-	Fraction.ONE = new Fraction(1,1);
-	
+	Fraction.ONE = new Fraction(1, 1);
+
 	return Fraction;
 })();

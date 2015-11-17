@@ -18,7 +18,7 @@
 }
 
 #sandbox pre {
-	background:#333;
+	background: #333;
 }
 
 #sandbox {
@@ -30,7 +30,7 @@
 	-moz-border-radius: 10px;
 	border-radius: 10px;
 	max-width: 640px;
-	margin: 30px auto;
+	margin: 0px auto;
 }
 
 #sandbox pre.output {
@@ -95,36 +95,38 @@
 	margin: 0;
 	resize: none;
 	width: 100%;
-	overflow: hidden;}
-#sandbox textarea:focus {
-	outline:0 none;
+	overflow: hidden;
 }
 
+#sandbox textarea:focus {
+	outline: 0 none;
+}
 
-#sandbox pre.output::-webkit-scrollbar,
-#sandbox pre.output::-webkit-scrollbar-button,
-#sandbox pre.output::-webkit-scrollbar-track,
-#sandbox pre.output::-webkit-scrollbar-track-piece,
-#sandbox pre.output::-webkit-scrollbar-thumb,
-#sandbox pre.output::-webkit-scrollbar-corner,
-#sandbox pre.output::-webkit-resizer {
+#sandbox pre.output::-webkit-scrollbar, #sandbox pre.output::-webkit-scrollbar-button,
+	#sandbox pre.output::-webkit-scrollbar-track, #sandbox pre.output::-webkit-scrollbar-track-piece,
+	#sandbox pre.output::-webkit-scrollbar-thumb, #sandbox pre.output::-webkit-scrollbar-corner,
+	#sandbox pre.output::-webkit-resizer {
 	background: transparent;
 }
+
 #sandbox pre.output::-webkit-scrollbar {
-	width:  7px;
+	width: 7px;
 	height: 7px;
 	-webkit-border-radius: 4px;
-	        border-radius: 4px;
+	border-radius: 4px;
 }
+
 #sandbox pre.output::-webkit-scrollbar-track-piece {
 	-webkit-border-radius: 5px;
-	        border-radius: 5px;
+	border-radius: 5px;
 }
+
 #sandbox pre.output::-webkit-scrollbar-thumb {
 	background: #4f4f4f;
-	        border-radius: 5px;
+	border-radius: 5px;
 }
+
 #sandbox pre.output::-webkit-scrollbar-button {
-	width:0;
-	height:0;
+	width: 0;
+	height: 0;
 }

@@ -54,3 +54,9 @@ test("toTex", function() {
 test("zero", function() {
 	ok(Fraction.ZERO.equals(frac(0,8)));
 });
+
+test("value", function() {
+	equal(frac(1, 2).value(), 0.5);
+	equal(Fraction.ZERO.value(), 0);
+	equal(Fraction.ONE.value(), 1);
+});
