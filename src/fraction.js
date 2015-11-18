@@ -15,6 +15,7 @@ Fraction = (function() {
 		}
 		return value;
 	};
+	
 	/**
 	 * Initialize the Fraction, numerator and denominator 
 	 * @class Fraction
@@ -182,11 +183,11 @@ Fraction = (function() {
 		if (!(b instanceof Fraction)) {
 			throw "must be a Fraction: " + b;
 		}
-		if (this === other || this.equals(b)) {
+		if (this === b || this.equals(b)) {
 			return 0;
 		}
-		var first = numerator * other.denominator;
-		var second = other.numerator * denominator;
+		var first = this.numerator * b.denominator;
+		var second = b.numerator * this.denominator;
 		if (first == second) {
 			return 0;
 		} else if (first < second) {

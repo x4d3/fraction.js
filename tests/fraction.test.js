@@ -82,3 +82,16 @@ test("inverse", function() {
 		Fraction.ZERO.inverse();
 	});
 });
+
+test("compare", function() {
+	ok(Fraction.ZERO.compareTo(Fraction.ONE) < 0);
+	ok(Fraction.ZERO.compareTo(Fraction.ZERO) === 0);
+	ok(frac(-7, 4).compareTo(frac(-3, 4)) < 0)
+	ok(frac(1, 4).compareTo(frac(1, 2)) < 0);
+	ok(frac(5, 8).compareTo(frac(7, 9)) < 0);
+	ok(frac(3, 4).compareTo(frac(3, 5)) > 0);
+
+	throws(function() {
+		frac(-7, 4).compareTo(5);
+	});
+});
