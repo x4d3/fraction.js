@@ -25,7 +25,7 @@ test("create fraction", function() {
 test("add fraction", function() {
 	var result = frac(2, 3).add(frac(5, 6)).add(frac(7, 8));
 	var expected = frac(19, 8);
-	ok(expected.equals(result),  expected + " != " + result);
+	ok(expected.equals(result), expected + " != " + result);
 
 });
 
@@ -52,7 +52,7 @@ test("toTex", function() {
 });
 
 test("zero", function() {
-	ok(Fraction.ZERO.equals(frac(0,8)));
+	ok(Fraction.ZERO.equals(frac(0, 8)));
 });
 
 test("value", function() {
@@ -61,17 +61,24 @@ test("value", function() {
 	equal(Fraction.ONE.value(), 1);
 });
 
-
 test("parse", function() {
 	ok(Fraction.parse("1/1").equals(Fraction.ONE));
-	ok(Fraction.parse("-4/7").equals(frac(-4,7)));
+	ok(Fraction.parse("-4/7").equals(frac(-4, 7)));
 	throws(function() {
-		Fraction.parse("0")
+		Fraction.parse("0");
 	});
 	throws(function() {
-		Fraction.parse("1/a")
+		Fraction.parse("1/a");
 	});
 	throws(function() {
-		Fraction.parse("a/a")
+		Fraction.parse("a/a");
+	});
+});
+
+test("inverse", function() {
+	ok(Fraction.ONE.equals(Fraction.ONE.inverse()));
+	ok(frac(-7, 4).inverse().equals(frac(-4, 7)));
+	throws(function() {
+		Fraction.ZERO.inverse();
 	});
 });

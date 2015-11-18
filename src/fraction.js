@@ -59,6 +59,15 @@ Fraction = (function() {
 	};
 
 	/**
+	 * inverse the Fraction
+	 * 
+	 * @method inverse
+	 * @return {Fraction} Returns the inverse of the fraction
+	 */
+	Fraction.prototype.inverse = function() {
+		return new Fraction(this.denominator, this.numerator);
+	};
+	/**
 	 * pretty-printer, converts fractions into whole numbers and fractions
 	 * 
 	 * @method toString
@@ -199,7 +208,6 @@ Fraction = (function() {
 	};
 	/* . */
 	// Adapted from Ratio.js
-	
 	/**
 	 * Takes two numbers and returns their greatest common factor
 	 * 
@@ -230,11 +238,11 @@ Fraction = (function() {
 	 */
 	Fraction.parse = function(s) {
 		var split = s.split('/');
-		var n = parseInt(split[0].trim(), 10 );
-		var d = parseInt(split[1].trim(), 10 );
+		var n = parseInt(split[0].trim(), 10);
+		var d = parseInt(split[1].trim(), 10);
 		return new Fraction(n, d);
 	};
-	
+
 	/**
 	 *<code>Fraction</code> representation of 0.
 	 * @property ZERO
