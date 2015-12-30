@@ -64,9 +64,9 @@ test("value", function() {
 test("parse", function() {
 	ok(Fraction.parse("1/1").equals(Fraction.ONE));
 	ok(Fraction.parse("-4/7").equals(frac(-4, 7)));
-	throws(function() {
-		Fraction.parse("0");
-	});
+	ok(Fraction.parse("0").equals(frac(0, 1)));
+	ok(Fraction.parse("5").equals(frac(5, 1)));	
+
 	throws(function() {
 		Fraction.parse("1/a");
 	});
