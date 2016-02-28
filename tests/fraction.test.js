@@ -95,3 +95,13 @@ test("compare", function() {
 		frac(-7, 4).compareTo(5);
 	});
 });
+
+test("mod", function() {
+	var result = frac(3, 7).mod(2);
+	var expected = frac(3, 7);
+	ok(expected.equals(result), expected + " != " + result);
+	result = frac(7, 2).mod(2);
+	expected = frac(3, 2);
+	ok(expected.equals(result), expected + " != " + result);
+
+});
