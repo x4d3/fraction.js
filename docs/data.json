@@ -1,0 +1,223 @@
+{
+    "project": {
+        "name": "fraction.js",
+        "description": "yet another implementation of fraction in javascript",
+        "version": "1.0.0",
+        "url": "https://github.com/x4d3/fraction.js"
+    },
+    "files": {
+        "src/fraction.js": {
+            "name": "src/fraction.js",
+            "modules": {},
+            "classes": {
+                "Fraction": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Fraction": {
+            "name": "Fraction",
+            "shortname": "Fraction",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "src/fraction.js",
+            "line": 19,
+            "description": "Initialize the Fraction, numerator and denominator",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "numerator",
+                    "description": "of the fraction",
+                    "type": "Integer"
+                },
+                {
+                    "name": "denominator",
+                    "description": "the fraction must not be equal to 0",
+                    "type": "Integer"
+                }
+            ]
+        }
+    },
+    "elements": {},
+    "classitems": [
+        {
+            "file": "src/fraction.js",
+            "line": 43,
+            "itemtype": "method",
+            "name": "value",
+            "return": {
+                "description": "the float number represented by the fraction",
+                "type": "Number"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 52,
+            "description": "clone the Fraction",
+            "itemtype": "method",
+            "name": "clone",
+            "return": {
+                "description": "Returns a clone of the fraction",
+                "type": "Fraction"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 62,
+            "description": "inverse the Fraction",
+            "itemtype": "method",
+            "name": "inverse",
+            "return": {
+                "description": "Returns the inverse of the fraction",
+                "type": "Fraction"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 71,
+            "description": "pretty-printer, converts fractions into whole numbers and fractions",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 82,
+            "description": "pretty-printer to support TeX notation (using with MathJax, KaTeX, etc)",
+            "itemtype": "method",
+            "name": "toTeX",
+            "return": {
+                "description": "",
+                "type": "String"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 118,
+            "description": "Adds the value of this fraction to another, returning the result in reduced form.",
+            "itemtype": "method",
+            "name": "add",
+            "return": {
+                "description": "",
+                "type": "Fraction"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 135,
+            "description": "Subtracts the value of another fraction from the value of this one, returning the result in reduced form",
+            "itemtype": "method",
+            "name": "subtract",
+            "return": {
+                "description": "",
+                "type": "Fraction"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 184,
+            "description": "Compares this object to another based on size.",
+            "itemtype": "method",
+            "name": "compareTo",
+            "return": {
+                "description": "",
+                "type": "Fraction"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 219,
+            "description": "Takes two numbers and returns their greatest common factor",
+            "static": 1,
+            "itemtype": "method",
+            "name": "gcf",
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 240,
+            "description": "parse a string of the format a/b to a Fraction",
+            "static": 1,
+            "itemtype": "method",
+            "name": "parse",
+            "return": {
+                "description": "",
+                "type": "Fraction"
+            },
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 264,
+            "description": "<code>Fraction</code> representation of 0.",
+            "itemtype": "property",
+            "name": "ZERO",
+            "type": "Fraction",
+            "static": 1,
+            "final": 1,
+            "class": "Fraction"
+        },
+        {
+            "file": "src/fraction.js",
+            "line": 272,
+            "description": "<code>Fraction</code> representation of 1.",
+            "itemtype": "property",
+            "name": "ONE",
+            "type": "Fraction",
+            "static": 1,
+            "final": 1,
+            "class": "Fraction"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:71"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:82"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:118"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:135"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:184"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:219"
+        },
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " src/fraction.js:240"
+        }
+    ]
+}

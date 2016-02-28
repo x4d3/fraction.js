@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>src/fraction.js - fraction.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="stylesheet" href="../assets/css/custom.css">
+    <link rel="stylesheet" href="../assets/vendor/bootstrap/css/bootstrap.css">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+</head>
+<body class="yui3-skin-sam">
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <h1 class="brand" style="padding: 10px 16px 10px; height: 20px; line-height: 20px; margin-left: 0;">
+	    <img alt="fraction.js" src="../assets/css/logo.png" style="max-height: 65%;" title="fraction.js">
+            fraction.js
+        </h1>
+	<div class="nav">
+            <li class="divider-vertical"></li>
+            <li>
+                <p class="navbar-text">
+                    API Docs for Version: <b>1.0.0</b>
+                </p>
+            </li>
+        </div>
+        <form class="navbar-form pull-right" style="line-height: 40px; height: 40px;">
+            <input style="margin-top: 0;" type="text" class="search-query" placeholder="Search for classes/modules..." data-obj='["classes/Fraction"]'>
+        </form>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="span3">
+	    <div>
+	        <h3>APIs</h3>
+	        <div id="sidebar">
+	            <ul id="main-nav" class="nav nav-tabs" style="margin-bottom:0;">
+	                <li class="active"><a href="#classes" data-toggle="tab">Classes</a></li>
+	                <li><a href="#modules" data-toggle="tab">Modules</a></li>
+	            </ul>
+	    
+	            <div id="api-tabview-filter">
+	                <input type="search" placeholder="Type to filter APIs">
+	            </div>
+	    
+	            <div class="tab-content" style="border: 1px solid #DDD; border-top:0;">
+	                <div class="tab-pane active" id="classes">
+	                    <ul id="api-classes" class="nav nav-list">
+	                            <li><a href="../classes/Fraction.html">Fraction</a></li>
+	                    </ul>
+	                </div>
+	    
+	                <div class="tab-pane" id="modules">
+	                    <ul id="api-modules" class="nav nav-list">
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+        </div>
+        <div class="span9">
+                <form id="options-form" class="form-inline pull-right">
+                    Show:
+                    <label for="api-show-inherited" class="checkbox">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected" class="checkbox">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private" class="checkbox">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated" class="checkbox">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </form>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<div class="page-header">
+    <h1>src/fraction.js <small>File</small></h1>
+</div>
+
+<div class="file">
+    <pre class="prettyprint linenums">
+Fraction = (function() {
+	var checkType = function(value, type) {
+		if (typeof value !== type) {
+			throw &quot;It should be a &quot; + type + &quot;: &quot; + value;
+		}
+		return value;
+	};
+	var checkIsNumber = function(value) {
+		return checkType(value, &#x27;number&#x27;);
+	};
+	var checkIsInt = function(value) {
+		checkIsNumber(value);
+		if (value % 1 !== 0) {
+			throw &quot;It should be an int: &quot; + value;
+		}
+		return value;
+	};
+
+	/**
+	 * Initialize the Fraction, numerator and denominator
+	 * @class Fraction
+	 * @constructor
+	 * @param {Integer} numerator of the fraction
+	 * @param {Integer} denominator the fraction must not be equal to 0
+	 */
+	var Fraction = function(numerator, denominator, noCheck) {
+		if (!noCheck) {
+			checkIsInt(numerator);
+			checkIsInt(denominator);
+			if (denominator === 0) {
+				throw &quot;The denominator must not be zero&quot;;
+			}
+			if (denominator &lt; 0) {
+				numerator = -numerator;
+				denominator = -denominator;
+			}
+		}
+		this.numerator = numerator;
+		this.denominator = denominator;
+		this.normalize();
+	};
+
+	/**
+	 *
+	 * @method value
+	 * @return {Number} the float number represented by the fraction
+	 */
+	Fraction.prototype.value = function() {
+		return this.numerator / this.denominator;
+	};
+
+	/**
+	 * clone the Fraction
+	 *
+	 * @method clone
+	 * @return {Fraction} Returns a clone of the fraction
+	 */
+	Fraction.prototype.clone = function() {
+		return new Fraction(this.numerator, this.denominator, true);
+	};
+
+	/**
+	 * inverse the Fraction
+	 *
+	 * @method inverse
+	 * @return {Fraction} Returns the inverse of the fraction
+	 */
+	Fraction.prototype.inverse = function() {
+		return new Fraction(this.denominator, this.numerator);
+	};
+	/**
+	 * pretty-printer, converts fractions into whole numbers and fractions
+	 *
+	 * @method toString
+	 * @returns {String}
+	 */
+	Fraction.prototype.toString = function() {
+		return this.numerator + &quot;/&quot; + this.denominator;
+
+	};
+
+	/**
+	 * pretty-printer to support TeX notation (using with MathJax, KaTeX, etc)
+	 *
+	 * @method toTeX
+	 * @returns {String}
+	 */
+	Fraction.prototype.toTeX = function(mixed) {
+		var result = &#x27;&#x27;;
+		if ((this.numerator &lt; 0) != (this.denominator &lt; 0))
+			result = &#x27;-&#x27;;
+		var numerator = Math.abs(this.numerator);
+		var denominator = Math.abs(this.denominator);
+
+		if (!mixed) {
+			// We want a simple fraction, without wholepart extracted
+			if (denominator === 1)
+				return result + numerator;
+			else
+				return result + &#x27;\\frac{&#x27; + numerator + &#x27;}{&#x27; + denominator + &#x27;}&#x27;;
+		}
+		var wholepart = Math.floor(numerator / denominator);
+		numerator = numerator % denominator;
+		if (wholepart !== 0)
+			result += wholepart;
+		if (numerator !== 0)
+			result += &#x27;\\frac{&#x27; + numerator + &#x27;}{&#x27; + denominator + &#x27;}&#x27;;
+		return result.length &gt; 0 ? result : &#x27;0&#x27;;
+	};
+
+	/* destructively rescale the fraction by some integral factor */
+	Fraction.prototype.rescale = function(factor) {
+		this.numerator *= factor;
+		this.denominator *= factor;
+		return this;
+	};
+
+	/**
+	 * Adds the value of this fraction to another, returning the result in reduced form.
+	 *
+	 * @method add
+	 * @returns {Fraction}
+	 */
+	Fraction.prototype.add = function(b) {
+		var a = this.clone();
+		if (!(b instanceof Fraction)) {
+			throw &quot;must be a Fraction: &quot; + b;
+		}
+		var td = a.denominator;
+		a.rescale(b.denominator);
+		a.numerator += b.numerator * td;
+		return a.normalize();
+	};
+
+	/**
+	 * Subtracts the value of another fraction from the value of this one, returning the result in reduced form
+	 *
+	 * @method subtract
+	 * @returns {Fraction}
+	 */
+	Fraction.prototype.subtract = function(b) {
+		var a = this.clone();
+		if (!(b instanceof Fraction)) {
+			throw &quot;must be a Fraction: &quot; + b;
+		}
+		var td = a.denominator;
+		a.rescale(b.denominator);
+		a.numerator -= b.numerator * td;
+
+		return a.normalize();
+	};
+
+	Fraction.prototype.multiply = function(b) {
+		var a = this.clone();
+		a.numerator *= b.numerator;
+		a.denominator *= b.denominator;
+		return a.normalize();
+	};
+
+	Fraction.prototype.divide = function(b) {
+		if (!(b instanceof Fraction)) {
+			throw &quot;must be a Fraction: &quot; + b;
+		}
+		var a = this.clone();
+		a.numerator *= b.denominator;
+		a.denominator *= b.numerator;
+		return a.normalize();
+	};
+
+	Fraction.prototype.mod = function(b) {
+		checkIsInt(b);
+		var a = this.clone();
+		a.numerator %= b * a.denominator;
+		return a.normalize();
+	};
+
+	Fraction.prototype.equals = function(b) {
+		if (!(b instanceof Fraction)) {
+			return false;
+		}
+		// fractions that are equal should have equal normalized forms
+		return (this.numerator === b.numerator &amp;&amp; this.denominator === b.denominator);
+	};
+	/**
+	 * Compares this object to another based on size.
+	 * @method compareTo
+	 * @returns {Fraction}
+	 */
+	Fraction.prototype.compareTo = function(b) {
+		if (!(b instanceof Fraction)) {
+			throw &quot;must be a Fraction: &quot; + b;
+		}
+		if (this === b || this.equals(b)) {
+			return 0;
+		}
+		var first = this.numerator * b.denominator;
+		var second = b.numerator * this.denominator;
+		if (first == second) {
+			return 0;
+		} else if (first &lt; second) {
+			return -1;
+		} else {
+			return 1;
+		}
+	};
+
+	Fraction.prototype.normalize = function() {
+		var gcf = Fraction.gcf(this.numerator, this.denominator);
+		this.numerator /= gcf;
+		this.denominator /= gcf;
+		if (this.denominator &lt; 0) {
+			this.numerator *= -1;
+			this.denominator *= -1;
+		}
+		return this;
+	};
+	/* . */
+	// Adapted from Ratio.js
+	/**
+	 * Takes two numbers and returns their greatest common factor
+	 *
+	 * @static
+	 * @method gcf
+	 * @returns {Number}
+	 */
+	Fraction.gcf = function(a, b) {
+		if (arguments.length &lt; 2) {
+			return a;
+		}
+		var c;
+		a = Math.abs(a);
+		b = Math.abs(b);
+		while (b) {
+			c = a % b;
+			a = b;
+			b = c;
+		}
+		return a;
+	};
+	/**
+	 * parse a string of the format a/b to a Fraction
+	 *
+	 * @static
+	 * @method parse
+	 * @returns {Fraction}
+	 */
+	Fraction.parse = function(s) {
+		var split = s.split(&#x27;/&#x27;);
+		var n = parseInt(split[0].trim(), 10);
+		if (isNaN(n)) {
+			throw &quot;can&#x27;t parse: &quot; + s;
+		}
+		if (split.length === 1) {
+			return new Fraction(n, 1);
+		} else {
+			var d = parseInt(split[1].trim(), 10);
+			if (isNaN(n)) {
+				throw &quot;can&#x27;t parse: &quot; + s;
+			}
+			return new Fraction(n, d);
+		}
+	};
+
+	/**
+	 *&lt;code&gt;Fraction&lt;/code&gt; representation of 0.
+	 * @property ZERO
+	 * @type Fraction
+	 * @static
+	 * @final
+	 */
+	Fraction.ZERO = new Fraction(0, 1);
+	/**
+	 *&lt;code&gt;Fraction&lt;/code&gt; representation of 1.
+	 * @property ONE
+	 * @type Fraction
+	 * @static
+	 * @final
+	 */
+	Fraction.ONE = new Fraction(1, 1);
+
+	return Fraction;
+})();
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/jquery/jquery-1.8.2.min.js"></script>
+<script src="../assets/vendor/bootstrap/js/bootstrap.js"></script>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script src="../assets/js/yuidoc-bootstrap.js"></script>
+<script>prettyPrint();</script>
+</body>
+</html>

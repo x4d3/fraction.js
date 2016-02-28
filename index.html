@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title>Fraction.js</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- Stylesheet -->
+<link href="sandbox.css" rel="stylesheet" />
+<!-- Custom CSS -->
+<style>
+body {
+	padding-top: 70px;
+	/* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+</style>
+<script src="fraction.js"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+	<a href="https://github.com/x4d3/fraction.js"><img style="position: absolute; top: 0; left: 0; border: 0;"
+		src="https://camo.githubusercontent.com/567c3a48d796e2fc06ea80409cc9dd82bf714434/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f6461726b626c75655f3132313632312e706e67"
+		alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png"></a>
+	<!-- Page Content -->
+	<div class="container">
+
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h1>fraction.js</h1>
+				<p class="lead">Yet another implementation of fraction in javascript</p>
+				
+				<h3>Download</h3>
+				<p>
+				
+				<a href="fraction.js" class="btn btn-lg btn-primary" download><span class="glyphicon glyphicon-download"></span> fraction.js</a>
+				<a href="fraction.min.js" class="btn btn-lg btn-primary" download><span class="glyphicon glyphicon-download"></span> fraction.min.js</a>
+				</p>
+				<h3>Usage:</h3>
+				<!-- Templates -->
+				<div id="sandbox" class="text-left">sandbox console loading...</div>
+				<!-- The sandbox template: -->
+				<script type="text/template" id="tplSandbox">
+		<pre class="output"></pre>
+		<div class="input">
+			<textarea rows="1" placeholder="<%= placeholder %>"></textarea>
+		</div>
+	</script>
+
+				<!-- The command/result template (NB whitespace/line breaks matter inside <pre> tag): -->
+				<script type="text/template" id="tplCommand"><% if (! _hidden) { %><span class="command"><%= command %></span>
+<span class="prefix"><%= this.resultPrefix %></span><span class="<%= _class %>"><%= result %></span>
+<% } %></script>
+				<!-- Scripts -->
+
+				<!-- Underscore, Backbone, backbone-localStorage, jQuery -->
+				
+				<script src="libs/underscore.min.js"></script>
+				<script src="libs/backbone.min.js"></script>
+				<script src="libs/backbone-localStorage.min.js"></script>
+				<script src="libs/jquery.min.js"></script>
+
+				<!-- The JS Sandbox Console script (requires underscore, backbone and jquery): -->
+				<script src="sandbox-console.js"></script>
+
+				<!-- When ready, create the model and view -->
+				<script type="text/javascript">
+					jQuery(document).ready(function($) {
+						// Create the sandbox:
+						window.sandbox = new Sandbox.View({
+							el : $('#sandbox'),
+							model : new Sandbox.Model()
+						});
+						sandbox.model.load('fraction.js');
+						sandbox.model.evaluate("var f1 = new Fraction(1,2); f1.toString();"); 
+						sandbox.model.evaluate("var f2 = f1.inverse().add(new Fraction(4,5)); f2.toTeX();"); 
+						sandbox.model.evaluate("var f3 = Fraction.parse('1/5').divide(new Fraction(7,8)); f3.value();"); 
+					});
+				</script>
+				<br/>
+				
+				<a href="docs/classes/Fraction.html" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-book"></span> Documentation</a>
+			</div>
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+	<!-- jQuery Version 1.11.1 -->
+	<script src="js/jquery.js"></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
